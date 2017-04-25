@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM microsoft/dotnet:1.0.3-sdk-projectjson
 
 RUN apt-get update \
   && apt-get install -y curl \
