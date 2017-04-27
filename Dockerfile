@@ -9,3 +9,12 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E03280
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN ln -s /usr/share/dotnet/shared/Microsoft.NETCore.App/*/System.Native.so /usr/lib/libSystem.Native.so
+
+# Install docker client:
+# https://docs.docker.com/engine/installation/binaries/#install-static-binaries
+RUN apt-get install wget -y \
+    && apt-get install ca-certificates -y \
+    && cd /tmp \
+    && wget https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz \
+    && tar zxvf docker-17.04.0-ce.tgz \
+    && cp -r docker/* /usr/bin/
